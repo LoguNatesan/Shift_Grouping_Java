@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>HomePage</title>
+</head>
+<body>
+
+<!-- <div th:if="${not #lists.isEmpty(listShiftGroups)}">
+
+<form class="form-horizontal" th:object="${listShiftGroups}" >
+<div>
+<label>Shift_Group:</label>
+	<select th:field="*{leaveType}">
+			<option th:each="shiftGroup : ${listShiftGroups}"
+								th:value="${shiftGroup.code}"
+								th:text="${shiftGroup.code}">List
+			</option>
+	</select>
+</div>
+</form>
+</div> -->
+<!-- <table>
+<tr th:each="shiftGroup : ${listShiftGroups}">
+<td th:text="${shiftGroup.code}"></td>
+</tr>
+</table> -->
+<p th:text="${model.message}"></p>
+</body>
+</html>
