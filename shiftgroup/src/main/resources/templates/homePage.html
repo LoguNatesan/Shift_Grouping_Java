@@ -5,26 +5,41 @@
 <title>HomePage</title>
 </head>
 <body>
+<form th:action="@{home}" method="post">
+<div align="center">
 
-<!-- <div th:if="${not #lists.isEmpty(listShiftGroups)}">
-
-<form class="form-horizontal" th:object="${listShiftGroups}" >
-<div>
-<label>Shift_Group:</label>
-	<select th:field="*{leaveType}">
-			<option th:each="shiftGroup : ${listShiftGroups}"
-								th:value="${shiftGroup.code}"
-								th:text="${shiftGroup.code}">List
+<label>Shift:</label>
+<div >
+	<select name="shiftCode">
+			<option th:each="shift : ${listShifts}" th:value="${shift.code}" th:text="${shift.code}" th:selected="${shift.code}">List
 			</option>
 	</select>
+	</div>
+</div>
+<div align="center">
+<label>Shift_Group:</label>
+<div >
+	<select name="shiftGroupCode">
+			<option th:each="shiftGroup : ${listShiftGroups}" th:value="${shiftGroup.code}" th:text="${shiftGroup.code}" th:selected="${shiftGroup.code}">List
+			
+			</option>
+	</select>
+	</div>
+</div>
+<div>
+<input type="submit" value="Submit" />
 </div>
 </form>
-</div> -->
-<!-- <table>
-<tr th:each="shiftGroup : ${listShiftGroups}">
-<td th:text="${shiftGroup.code}"></td>
-</tr>
-</table> -->
-<p th:text="${model.message}"></p>
+<!-- <div th:if="${not #lists.isEmpty(listShiftGroups)}">
+
+
+<div>
+
+</div>
+</form>
+</div>  -->
+<!-- <form class="form-horizontal" th:object="${listShiftGroups}" th:action="@{home}">
+-->
+
 </body>
 </html>

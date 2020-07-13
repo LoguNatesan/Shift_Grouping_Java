@@ -23,7 +23,7 @@ public class ShiftgroupApplication {
 		ShiftRepository shiftRepository = configurableApplicationContext.getBean(ShiftRepository.class);
 		ShiftGroupRepository shiftGroupRepository = configurableApplicationContext.getBean(ShiftGroupRepository.class);
 		
-		ShiftGroupService service = configurableApplicationContext.getBean(ShiftGroupService.class);
+		//ShiftGroupService service = configurableApplicationContext.getBean(ShiftGroupService.class);
 		
 		Shift mornShift = new Shift("M-01");
 		Shift eveShift = new Shift("E-02");
@@ -50,10 +50,7 @@ public class ShiftgroupApplication {
 		grpD.addShift(eveShift);
 		
 		shiftGroupRepository.saveAll(shiftGroups);
-		
 		shiftRepository.saveAll(shifts);
-		
-		System.out.println("----------->" + service.doesShiftBelongToGroup("Even02", "F"));
 	}
 
 }

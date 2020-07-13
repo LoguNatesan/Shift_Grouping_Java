@@ -1,9 +1,11 @@
 package com.java.shiftgroup.model;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,23 +16,24 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name="shift_group")
 public class ShiftGroup {	
+	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private long id;
 	@Id
 	private String code;
 	
 	@ManyToMany(
-			fetch = FetchType.EAGER,
-			cascade = CascadeType.PERSIST)
+			fetch= FetchType.EAGER,cascade = CascadeType.PERSIST)
 	@JoinTable(
 			name="shift_grouping", 
 			joinColumns = @JoinColumn(name="shift_group_code"),
 			inverseJoinColumns= @JoinColumn(name="shift_code"))
 	
-	private List<Shift> listShifts = new ArrayList<>();
+	private Set<Shift> listShifts = new HashSet<>();
 	
 	//Default constructor is mandatory for JPA mapping
 	public ShiftGroup() {
@@ -42,14 +45,18 @@ public class ShiftGroup {
 	}
 
 	public void addShift(Shift shift) {
-		listShifts.add(shift);
+		this.listShifts.add(shift);
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
+	
+	public String getCode() {
+		return code;
+	}
 
-	public List<Shift> getListShifts() {
+	public Set<Shift> getListShifts() {
 		return listShifts;
 	}
 }
