@@ -25,14 +25,23 @@ Implementing Shift Grouping in a Maven project with SpringBoot Framework,JPA, Hi
 * _Shift_group_ table has relationship with both _shift_group_code_ & _shift_code_ keys in _shift_grouping_ table whereas _Shift_ table has relationship with only _shift_code_ key in _shift_grouping_ table. This represents that there is **unidirectional relationship** which means, with _shift_group_ object related _shift_ objects (collection) can be retrieved but vice_versa is not possible.
 
 # Assumptions
-
-* _Shift_ table data: (with 3 shifts)
- * M-01 - Morning Shift
- * E-02 - Evening Shift
- * N-03 - Night Shift
+  
+* _Shift_ table data: (with 3 shifts) 
+  * M-01 - Morning Shift 
+  * E-02 - Evening Shift 
+  * N-03 - Night Shift
 
 * Shift_group table data: (only 6 groups with 3 people each)
- * Groups - A,B,C,D,E,F (Total members - 6 * 3 = 18)
+  * Groups - A,B,C,D,E,F (Total members - 6 * 3 = 18)
+ 
+## Shift database table
+ ![Shift database table](https://github.com/LoguNatesan/Shift_Grouping_Java/blob/master/shiftgroup/Images/Shift%20table.PNG)
+
+## Shift group database table
+ ![Shift group database table](https://github.com/LoguNatesan/Shift_Grouping_Java/blob/master/shiftgroup/Images/ShiftGroup%20table.PNG)
+ 
+## Shift grouping database table
+ ![Shift grouping database table](https://github.com/LoguNatesan/Shift_Grouping_Java/blob/master/shiftgroup/Images/ShiftGrouping%20table.PNG)
  
 # Decisions
  
