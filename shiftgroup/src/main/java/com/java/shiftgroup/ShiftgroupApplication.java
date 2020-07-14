@@ -47,25 +47,25 @@ public class ShiftgroupApplication {
 		
 		grpB.addShift(nightShift);
 		grpB.addShift(mornShift);
-		grpB.addShift(eveShift);
+		//grpB.addShift(eveShift);
 	
 		
 		grpC.addShift(eveShift);
-		grpC.addShift(mornShift);
+		//grpC.addShift(mornShift);
 		grpC.addShift(nightShift);
 		
 		
-		grpD.addShift(eveShift);
+		//grpD.addShift(eveShift);
 		grpD.addShift(mornShift);
 		grpD.addShift(nightShift);
 		
-		grpE.addShift(nightShift);
+		//grpE.addShift(nightShift);
 		grpE.addShift(eveShift);
 		grpE.addShift(mornShift);
 		
 		
 		grpF.addShift(eveShift);
-		grpF.addShift(mornShift);
+		//grpF.addShift(mornShift);
 		grpF.addShift(nightShift);
 	
 		

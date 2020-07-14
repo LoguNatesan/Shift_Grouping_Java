@@ -58,8 +58,8 @@ public class HomeController {
 		if(!shiftGroupCode.equals("none") && !shiftCode.equals("none")) {
 			boolean checkShift = shiftGroupService.doesShiftBelongToGroup(shiftCode, shiftGroupCode);
 			
-			if(checkShift) message = "Selected shift code: '" + shiftGroupCode + "' belongs to shift group: " + shiftCode;
-			else message = "Selected shift code: '" + shiftGroupCode + "' does not belong to shift group: " + shiftCode;		
+			if(checkShift) message = "Selected shift code: '" + shiftCode + "' belongs to shift group: " + shiftGroupCode;
+			else message = "Selected shift code: '" + shiftCode + "' does not belong to shift group: " + shiftGroupCode;		
 		} 
 		else {
 			message = "Please select valid inputs!";
