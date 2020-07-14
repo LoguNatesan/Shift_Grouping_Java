@@ -50,6 +50,6 @@ Implementing Shift Grouping in a Maven project with SpringBoot Framework,JPA, Hi
 * In order to check 'doesShiftBelongToGroup' accessing only _shift_group_ object is enough because _Shift_ (collection) is stored inside _shift_group_ object. 
 * Used HashSet to store the collection of shift objects instead of ArrayList, since it helps JPA & Hibernate to handle DML operations efficiently. 
 
- ## Delpoyment to Production environment, 
+ ## Considerations for delpoyment to Production environment, 
  * Creating as a Maven(build tool) project will facilitate Dependency Management, Transitive Dependency and minimal configuration.
  * With Many to Many mapping implemented in the application using JPA & Hibernate for Object Relational Mapping(ORM), SpringBoot framework will automatically create tables in H2 database and store datas.
