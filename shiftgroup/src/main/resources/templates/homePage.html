@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>HomePage</title>
+	<meta charset="ISO-8859-1">
+    <title>Check Shift Grouping</title>    
+    <link rel="stylesheet" href="customcss.css">  
 </head>
+
 <body>
-<form th:action="@{home}" method="post">
-<div align="center">
-
-<label>Shift:</label>
-<div >
-	<select name="shiftCode">
-			<option th:each="shift : ${listShifts}" th:value="${shift.code}" th:text="${shift.code}" th:selected="${shift.code}">List
-			</option>
-	</select>
-	</div>
-</div>
-<div align="center">
-<label>Shift_Group:</label>
-<div >
-	<select name="shiftGroupCode">
-			<option th:each="shiftGroup : ${listShiftGroups}" th:value="${shiftGroup.code}" th:text="${shiftGroup.code}" th:selected="${shiftGroup.code}">List
-			
-			</option>
-	</select>
-	</div>
-</div>
 <div>
-<input type="submit" value="Submit" />
+	<form th:action="@{home}" method="post">
+		<table class="box" border="1px" cellspacing="0">
+			<thead>
+				<tr> 
+					<td colspan="2" align="center" border="0px"> 
+						<label> <b>Check Shift Grouping </b> </label>
+					</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr> 
+					<td align="center" style="color:blue;">
+						 <label><b>Shift</b></label>
+					</td>
+					<td align="center" style="padding:0px"> 
+						<select name="shiftCode" required>
+						<option value="none">-Select-</option>
+						<option th:each="shift : ${listShifts}" th:value="${shift.code}" th:text="${shift.code}">
+						</option> </select>
+					</td>
+				</tr>
+				<tr> 
+					<td align="center" style="color:blue;">
+						 <label><b>Shift Group</b></label>
+					</td>
+					<td align="center" style="padding:0px"> 
+						<select name="shiftGroupCode" required>
+						<option value="none">-Select-</option>
+						<option th:each="shiftGroup : ${listShiftGroups}" th:value="${shiftGroup.code}" th:text="${shiftGroup.code}">
+						</option> </select>
+					</td>
+				</tr>
+			</tbody>
+			<tfoot border="0px">
+				<tr> 
+					<td align="center" colspan="2" border="0px"> 
+						<!-- <input type="submit" value="Submit" /> -->
+						<button class="button" style="width:80%">Submit</button>
+					</td>
+				</tr>
+				<tr border="0px">
+					<td align="center" colspan="2" border="0px">
+						<p th:text="${message}"></p>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</form>
 </div>
-</form>
-<!-- <div th:if="${not #lists.isEmpty(listShiftGroups)}">
-
-
-<div>
-
-</div>
-</form>
-</div>  -->
-<!-- <form class="form-horizontal" th:object="${listShiftGroups}" th:action="@{home}">
--->
-
 </body>
 </html>

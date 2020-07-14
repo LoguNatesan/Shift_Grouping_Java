@@ -22,8 +22,11 @@ import javax.persistence.Table;
 public class ShiftGroup {	
 	
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	@Column(name = "Id", nullable = false, unique = true)
+	private int id;
+	
 	@Id
+	@Column(name = "Code", nullable = false, unique = true)
 	private String code;
 	
 	@ManyToMany(
@@ -32,7 +35,6 @@ public class ShiftGroup {
 			name="shift_grouping", 
 			joinColumns = @JoinColumn(name="shift_group_code"),
 			inverseJoinColumns= @JoinColumn(name="shift_code"))
-	
 	private Set<Shift> listShifts = new HashSet<>();
 	
 	//Default constructor is mandatory for JPA mapping
@@ -40,12 +42,25 @@ public class ShiftGroup {
 		super();
 	}
 	
-	public ShiftGroup(String code) {
+	public ShiftGroup(int id,String code) {
+		this.id=id;
 		this.code=code;
 	}
 
 	public void addShift(Shift shift) {
 		this.listShifts.add(shift);
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public void setListShifts(Set<Shift> listShifts) {
+		this.listShifts = listShifts;
 	}
 
 	public long getId() {

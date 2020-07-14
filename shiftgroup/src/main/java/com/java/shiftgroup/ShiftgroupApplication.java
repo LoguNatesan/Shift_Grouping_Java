@@ -25,29 +25,49 @@ public class ShiftgroupApplication {
 		
 		//ShiftGroupService service = configurableApplicationContext.getBean(ShiftGroupService.class);
 		
-		Shift mornShift = new Shift("M-01");
-		Shift eveShift = new Shift("E-02");
-		Shift nightShift = new Shift("N-03");
+		Shift mornShift = new Shift(1,"M-01");
+		Shift eveShift = new Shift(2,"E-02");
+		Shift nightShift = new Shift(3,"N-03");
 		List<Shift> shifts = Arrays.asList(mornShift,eveShift,nightShift);
 		
 		shiftRepository.saveAll(shifts);
 		
-		ShiftGroup grpA = new ShiftGroup("A");
-		ShiftGroup grpB = new ShiftGroup("B");
-		ShiftGroup grpC = new ShiftGroup("C");
-		ShiftGroup grpD = new ShiftGroup("D");
-		ShiftGroup grpE = new ShiftGroup("E");
-		ShiftGroup grpF = new ShiftGroup("F");
+		ShiftGroup grpA = new ShiftGroup(1,"A");
+		ShiftGroup grpB = new ShiftGroup(2,"B");
+		ShiftGroup grpC = new ShiftGroup(3,"C");
+		ShiftGroup grpD = new ShiftGroup(4,"D");
+		ShiftGroup grpE = new ShiftGroup(5,"E");
+		ShiftGroup grpF = new ShiftGroup(6,"F");
 		List<ShiftGroup> shiftGroups = Arrays.asList(grpA,grpB,grpC,grpD,grpE,grpF);
 		
 		grpA.addShift(mornShift);
+		grpA.addShift(eveShift);
+		grpA.addShift(nightShift);
+		
+		
 		grpB.addShift(nightShift);
-		grpC.addShift(eveShift);
-		grpD.addShift(mornShift);
-		grpE.addShift(nightShift);
-		grpF.addShift(eveShift);
+		grpB.addShift(mornShift);
 		grpB.addShift(eveShift);
+	
+		
+		grpC.addShift(eveShift);
+		grpC.addShift(mornShift);
+		grpC.addShift(nightShift);
+		
+		
 		grpD.addShift(eveShift);
+		grpD.addShift(mornShift);
+		grpD.addShift(nightShift);
+		
+		grpE.addShift(nightShift);
+		grpE.addShift(eveShift);
+		grpE.addShift(mornShift);
+		
+		
+		grpF.addShift(eveShift);
+		grpF.addShift(mornShift);
+		grpF.addShift(nightShift);
+	
 		
 		shiftGroupRepository.saveAll(shiftGroups);
 		shiftRepository.saveAll(shifts);

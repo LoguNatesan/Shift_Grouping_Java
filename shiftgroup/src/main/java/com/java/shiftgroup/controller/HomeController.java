@@ -1,15 +1,16 @@
 package com.java.shiftgroup.controller;
 
 import java.util.List;
-import java.util.Set;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.java.shiftgroup.model.Shift;
 import com.java.shiftgroup.model.ShiftGroup;
@@ -25,6 +26,7 @@ public class HomeController {
 	@Autowired
 	private ShiftService shiftService;
 	
+	
 	@RequestMapping(value="home", method= RequestMethod.GET)
 	public String gethomeView(Model model)
 	{
@@ -38,19 +40,32 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="home", method= RequestMethod.POST)
-	public String gethomeView(Model model,@RequestParam String shiftGroupCode, @RequestParam String shiftCode )
+	public String gethomeView(Model model,@RequestParam String shiftGroupCode, @RequestParam String shiftCode)
 	{
-	    System.out.println("Query param: ShiftGroupCode: " + shiftGroupCode);
-	    System.out.println("Query param: ShiftCode: " + shiftCode);
-		List<ShiftGroup> listShiftGroups = shiftGroupService.listAllShiftGroups();
-		List<Shift> listShifts = shiftService.listAllShifts();
-		model.addAttribute("listShiftGroups",listShiftGroups);
-		model.addAttribute("listShifts",listShifts);
+
+		/*
+		 * System.out.println("Query param: ShiftGroupCode: " + shiftGroupCode);
+		 * System.out.println("Query param: ShiftCode: " + shiftCode);
+		 */
 		
-		boolean checkShift = shiftGroupService.doesShiftBelongToGroup(shiftCode, shiftGroupCode);
-		
-		if(checkShift) System.out.println("Selected shift code: '" + shiftGroupCode + "' belongs to shift group: " + shiftCode);
-		else System.out.println("Selected shift code: '" + shiftGroupCode + "' does not belong to shift group: " + shiftCode);
+		 List<ShiftGroup> listShiftGroups = shiftGroupService.listAllShiftGroups();
+		 List<Shift> listShifts = shiftService.listAllShifts();
+		 model.addAttribute("listShiftGroups",listShiftGroups);
+		 model.addAttribute("listShifts",listShifts);
+		 
+		String message ="";
+
+		if(!shiftGroupCode.equals("none") && !shiftCode.equals("none")) {
+			boolean checkShift = shiftGroupService.doesShiftBelongToGroup(shiftCode, shiftGroupCode);
+			
+			if(checkShift) message = "Selected shift code: '" + shiftGroupCode + "' belongs to shift group: " + shiftCode;
+			else message = "Selected shift code: '" + shiftGroupCode + "' does not belong to shift group: " + shiftCode;		
+		} 
+		else {
+			message = "Please select valid inputs!";
+		}
+
+		model.addAttribute("message",message);
 		return "homePage";
 	}
 
